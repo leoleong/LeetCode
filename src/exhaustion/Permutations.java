@@ -5,6 +5,11 @@
  * For example,
  * [1,2,3] have the following permutations:
  * [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
+ * 
+ * Solution:
+ * There are 2 ways to solve this problem:
+ * 1. sort + dfs (realized)
+ * 2. count + dfs
  */
 package exhaustion;
 
@@ -42,7 +47,7 @@ public class Permutations {
 			result.add(new ArrayList<Integer>(path));
 			return;
 		}
-		
+
 		for (int i = 0; i < nums.length; i++) {
 			if (!used[i]) {
 				used[i] = true;

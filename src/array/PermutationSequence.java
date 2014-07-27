@@ -15,6 +15,10 @@
  * Given n and k, return the kth permutation sequence.
  * 
  * Note: Given n will be between 1 and 9 inclusive.
+ * 
+ * Solution:
+ * Inverse Cantor expansion
+ * X =  an*(n-1)! + an-1*(n-2)! + ... + a2*1! + a1*0!
  */
 package array;
 

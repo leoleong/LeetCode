@@ -1,3 +1,17 @@
+/**
+ * Problem:
+ * Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+ * 
+ * For example,
+ * S = "ADOBECODEBANC"
+ * T = "ABC"
+ * 
+ * Minimum window is "BANC".
+ * 
+ * Note:
+ * If there is no such window in S that covers all characters in T, return the emtpy string "".
+ * If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
+ */
 package detail;
 
 import java.util.HashMap;
@@ -24,10 +38,11 @@ public class MinimumWindowSubstring {
 			}
 		}
 
-		String result = new String();
-		int start, length, min;
+		String result = "";
+		int start, length;
 		start = length = 0;
-		min = Integer.MAX_VALUE;
+		int min = Integer.MAX_VALUE;
+
 		for (int i = 0; i < S.length(); i++) {
 			char ch = S.charAt(i);
 			if (map.containsKey(ch)) {

@@ -13,7 +13,6 @@ public class MultiplyStrings {
 
 		String num1 = "9311";
 		String num2 = "0";
-		// 67143675422804947379429215144664313370120390398055713625298709447
 
 		String result = multiply(num1, num2);
 

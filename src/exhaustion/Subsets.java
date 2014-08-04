@@ -1,3 +1,23 @@
+/**
+ * Given a set of distinct integers, S, return all possible subsets.
+ * 
+ * Note:
+ * 1. Elements in a subset must be in non-descending order.
+ * 2. The solution set must not contain duplicate subsets.
+ * 
+ * For example,
+ * If S = [1,2,3], a solution is:
+ * [
+ * 	[3],
+ * 	[1],
+ * 	[2],
+ * 	[1,2,3],
+ * 	[1,3],
+ * 	[2,3],
+ * 	[1,2],
+ * 	[]
+ * ]
+ */
 package exhaustion;
 
 import java.util.ArrayList;
@@ -22,7 +42,7 @@ public class Subsets {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		List<Integer> path = new ArrayList<Integer>();
 
-		Arrays.sort(S);
+//		Arrays.sort(S);
 		dfs(result, path, S, 0);
 
 		return result;

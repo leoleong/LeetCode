@@ -1,11 +1,10 @@
+/**
+ * Problem:
+ * Implement strStr().
+ * Returns a pointer to the first occurrence of needle in haystack, or null if needle is not part of haystack.
+ */
 package string;
 
-/**
- * author : leo 
- * date : 2014-5-20 
- * comment : 
- * 暴力破解，仍可以优化
- */
 public class ImplementstrStr {
 
 	public static void main(String[] args) {
@@ -20,28 +19,24 @@ public class ImplementstrStr {
 
 	public static String strStr(String haystack, String needle) {
 
-		int hlength = haystack.length();
-		int nlength = needle.length();
-		boolean isMatch;
-
-		if (nlength == 0) {
+		if (haystack == null || needle == null || needle.length() == 0) {
 			return haystack;
-		} else {
-			for (int i = 0; i <= hlength - nlength; i++) {
-				isMatch = true;
-				for (int j = 0, prev = i; j < nlength;) {
-					if (haystack.charAt(prev++) != needle.charAt(j++)) {
-						isMatch = false;
-						break;
-					}
-				}
+		}
 
-				if (isMatch) {
-					return haystack.substring(i);
+		for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+			boolean match = true;
+			for (int j = 0; j < needle.length(); j++) {
+				if (haystack.charAt(i + j) != needle.charAt(j)) {
+					match = false;
+					break;
 				}
 			}
 
-			return null;
+			if (match) {
+				return haystack.substring(i);
+			}
 		}
+
+		return null;
 	}
 }

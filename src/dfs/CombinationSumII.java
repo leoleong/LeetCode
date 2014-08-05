@@ -1,3 +1,20 @@
+/**
+ * Problem:
+ * Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
+ * Each number in C may only be used once in the combination.
+ * 
+ * Note:
+ * All numbers (including target) will be positive integers.
+ * Elements in a combination (a1, a2, ¡­ , ak) must be in non-descending order. (ie, a1 ¡Ü a2 ¡Ü ¡­ ¡Ü ak).
+ * The solution set must not contain duplicate combinations.
+ * 
+ * For example, given candidate set 10,1,2,7,6,1,5 and target 8,
+ * A solution set is:
+ * [1, 7] 
+ * [1, 2, 5] 
+ * [2, 6] 
+ * [1, 1, 6]
+ */
 package dfs;
 
 import java.util.ArrayList;
@@ -29,12 +46,14 @@ public class CombinationSumII {
 		return result;
 	}
 
-	private static void dfs(List<List<Integer>> result, List<Integer> path, int[] num, int target, int start) {
+	private static void dfs(List<List<Integer>> result, List<Integer> path,
+			int[] num, int target, int start) {
 
 		if (target == 0) {
 			result.add(new ArrayList<Integer>(path));
 			return;
 		}
+
 		for (int i = start; i < num.length; i++) {
 			if (i > start && num[i] == num[i - 1]) {
 				continue;

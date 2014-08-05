@@ -1,3 +1,15 @@
+/**
+ * Problem:
+ * Given a string s, partition s such that every substring of the partition is a palindrome.
+ * Return all possible palindrome partitioning of s.
+ * 
+ * For example, given s = "aab",
+ * Return
+ * [
+ * 	["aa","b"],
+ * 	["a","a","b"]
+ * ]
+ */
 package dfs;
 
 import java.util.ArrayList;
@@ -25,7 +37,8 @@ public class PalindromePartitioning {
 		return result;
 	}
 
-	private static void dfs(ArrayList<ArrayList<String>> result, ArrayList<String> path, String s, int start) {
+	private static void dfs(ArrayList<ArrayList<String>> result,
+			ArrayList<String> path, String s, int start) {
 
 		if (start == s.length()) {
 			result.add(new ArrayList<String>(path));

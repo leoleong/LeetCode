@@ -1,3 +1,8 @@
+/**
+ * Problem:
+ * Follow up for N-Queens problem.
+ * Now, instead outputting board configurations, return the total number of distinct solutions.
+ */
 package dfs;
 
 public class NQueensII {
@@ -24,10 +29,12 @@ public class NQueensII {
 	private static void dfs(int[] path, int row) {
 
 		int N = path.length;
+
 		if (row == N) {
 			result++;
 			return;
 		}
+
 		for (int j = 0; j < N; j++) {
 			if (isValid(path, row, j)) {
 				path[row] = j;
@@ -39,7 +46,8 @@ public class NQueensII {
 	private static boolean isValid(int[] path, int row, int column) {
 
 		for (int i = 0; i < row; i++) {
-			if (path[i] == column || Math.abs(row - i) == Math.abs(column - path[i])) {
+			if (path[i] == column
+					|| Math.abs(row - i) == Math.abs(column - path[i])) {
 				return false;
 			}
 		}

@@ -1,3 +1,10 @@
+/**
+ * Problem:
+ * Follow up for "Search in Rotated Sorted Array":
+ * What if duplicates are allowed?
+ * Would this affect the run-time complexity? How and why?
+ * Write a function to determine if a given target is in the array.
+ */
 package array;
 
 public class SearchinRotatedSortedArrayII {
@@ -13,7 +20,7 @@ public class SearchinRotatedSortedArrayII {
 
 		int start = 0;
 		int end = A.length - 1;
-		
+
 		while (start <= end) {
 			int mid = (start + end) / 2;
 			if (target == A[mid]) {
@@ -38,7 +45,7 @@ public class SearchinRotatedSortedArrayII {
 				}
 			}
 		}
-		
+
 		return false;
 	}
 }

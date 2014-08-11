@@ -34,7 +34,8 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 
-		dfs(result, 1, root);
+//		dfs(result, 1, root);
+		bfs(result, root);
 		for (int i = 1; i < result.size(); i += 2) {
 			Collections.reverse(result.get(i));
 		}

@@ -1,3 +1,8 @@
+/**
+ * Problem:
+ * Given a binary tree, find its minimum depth.
+ * The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+ */
 package tree.recursion;
 
 public class MinimumDepthofBinaryTree {
@@ -13,19 +18,22 @@ public class MinimumDepthofBinaryTree {
 
 	private static int minDepth(TreeNode root, boolean hasSibling) {
 
-		// convergence condition
 		if (root == null) {
 			return hasSibling ? Integer.MAX_VALUE : 0;
 		}
 
+		// divide
 		int left = minDepth(root.left, root.right != null);
 		int right = minDepth(root.right, root.left != null);
 
-		return Math.min(left, right) + 1;
+		// conquer
+		int depth = Math.min(left, right) + 1;
+
+		return depth;
 	}
 
 	// Definition for binary tree
-	private class TreeNode {
+	public class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;

@@ -1,11 +1,15 @@
+/**
+ * Problem:
+ * Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
+ * 
+ * For example, given the array [−2,1,−3,4,−1,2,1,−5,4],
+ * the contiguous subarray [4,−1,2,1] has the largest sum = 6.
+ * 
+ * More practice:
+ * If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+ */
 package dp;
 
-/**
- * author : leo
- * date : 2014-5-22
- * comment : 
- * Typical DP(actually 2 dp(s):dp,max)
- */
 public class MaximumSubarray {
 
 	public static void main(String[] args) {
@@ -17,12 +21,12 @@ public class MaximumSubarray {
 
 	public static int maxSubArray(int[] A) {
 
-		// special test case
-		if (A.length==0) {
+		// corner condition test case
+		if (A == null || A.length == 0) {
 			return 0;
 		}
 
-		// functional test case
+		// normal test case
 		int dp = A[0];
 		int max = dp;
 

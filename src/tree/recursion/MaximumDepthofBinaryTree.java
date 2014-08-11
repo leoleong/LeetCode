@@ -1,3 +1,8 @@
+/**
+ * Problem:
+ * Given a binary tree, find its maximum depth.
+ * The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+ */
 package tree.recursion;
 
 public class MaximumDepthofBinaryTree {
@@ -8,19 +13,22 @@ public class MaximumDepthofBinaryTree {
 
 	public static int maxDepth(TreeNode root) {
 
-		// convergence condition
 		if (root == null) {
 			return 0;
 		}
 
+		// divide
 		int left = maxDepth(root.left);
 		int right = maxDepth(root.right);
 
-		return Math.max(left, right) + 1;
+		// conquer
+		int depth = Math.max(left, right) + 1; 
+		
+		return depth;
 	}
 
 	// Definition for binary tree
-	private class TreeNode {
+	public class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;

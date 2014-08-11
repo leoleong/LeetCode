@@ -1,3 +1,18 @@
+/**
+ * Problem:
+ * Given a binary tree, return the preorder traversal of its nodes' values.
+ * 
+ * For example:
+ * Given binary tree {1,#,2,3},
+ * 1
+ *  \
+ *   2
+ *  /
+ * 3
+ * return [1,3,2].
+ * 
+ * Note: Recursive solution is trivial, could you do it iteratively?
+ */
 package tree.traversal;
 
 import java.util.ArrayDeque;
@@ -11,8 +26,7 @@ public class BinaryTreeInorderTraversal {
 
 	}
 
-	// ------------------------------------------------------------------------
-	// 1. recursion method
+	// Method 1: recursion method
 	public static List<Integer> inorderTraversal(TreeNode root) {
 
 		List<Integer> result = new ArrayList<Integer>();
@@ -25,13 +39,13 @@ public class BinaryTreeInorderTraversal {
 		if (node == null) {
 			return;
 		}
+		
 		dfs(result, node.left);
 		result.add(node.val);
 		dfs(result, node.right);
 	}
 
-	// ------------------------------------------------------------------------
-	// 2. stack method
+	// Method 2: stack method, simulate recursion
 	public static List<Integer> inorderTraversal_1(TreeNode root) {
 
 		List<Integer> result = new ArrayList<Integer>();
@@ -51,8 +65,7 @@ public class BinaryTreeInorderTraversal {
 		return result;
 	}
 
-	// ------------------------------------------------------------------------
-	// 3. morris method
+	// Method 3: morris method
 	public static List<Integer> inorderTraversal_2(TreeNode root) {
 
 		List<Integer> result = new ArrayList<Integer>();

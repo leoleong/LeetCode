@@ -1,3 +1,10 @@
+/**
+ * Problem:
+ * Given inorder and postorder traversal of a tree, construct the binary tree.
+ * 
+ * Note:
+ * You may assume that duplicates do not exist in the tree.
+ */
 package tree.construct;
 
 public class ConstructBinaryTreefromInorderandPostorderTraversal {
@@ -8,10 +15,12 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
 
 	public static TreeNode buildTree(int[] inorder, int[] postorder) {
 
-		return buildTree(postorder, inorder, 0, postorder.length - 1, 0, inorder.length - 1);
+		return buildTree(postorder, inorder, 0, postorder.length - 1, 0,
+				inorder.length - 1);
 	}
 
-	private static TreeNode buildTree(int[] postorder, int[] inorder, int postFirst, int postLast, int inFirst, int inLast) {
+	private static TreeNode buildTree(int[] postorder, int[] inorder,
+			int postFirst, int postLast, int inFirst, int inLast) {
 
 		// convergence condition
 		if (postFirst > postLast || inFirst > inLast) {
@@ -30,8 +39,10 @@ public class ConstructBinaryTreefromInorderandPostorderTraversal {
 		// total nodes in right subtree
 		int distance = inLast - inRootPos;
 
-		root.left = buildTree(postorder, inorder, postFirst, postLast - distance - 1, inFirst, inRootPos - 1);
-		root.right = buildTree(postorder, inorder, postFirst - distance, postLast - 1, inRootPos + 1, inLast);
+		root.left = buildTree(postorder, inorder, postFirst, postLast
+				- distance - 1, inFirst, inRootPos - 1);
+		root.right = buildTree(postorder, inorder, postFirst - distance,
+				postLast - 1, inRootPos + 1, inLast);
 
 		return root;
 	}

@@ -4,10 +4,10 @@
  * You may assume no duplicates in the array.
  * 
  * Here are few examples.
- * [1,3,5,6], 5 ¡ú 2
- * [1,3,5,6], 2 ¡ú 1
- * [1,3,5,6], 7 ¡ú 4
- * [1,3,5,6], 0 ¡ú 0
+ * [1,3,5,6], 5 ï¿½ï¿½ 2
+ * [1,3,5,6], 2 ï¿½ï¿½ 1
+ * [1,3,5,6], 7 ï¿½ï¿½ 4
+ * [1,3,5,6], 0 ï¿½ï¿½ 0
  */
 package search;
 
@@ -28,7 +28,7 @@ public class SearchInsertPosition {
 		int mid;
 
 		while (start <= end) {
-			mid = (start + end) / 2;
+			mid = start + (end - start) / 2;
 			if (A[mid] < target) {
 				start = mid + 1;
 				pos = start;

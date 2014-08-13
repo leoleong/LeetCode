@@ -34,7 +34,7 @@ public class Searcha2DMatrix {
 		int mid;
 
 		while (start <= end) {
-			mid = (start + end) / 2;
+			mid = start + (end - start) / 2;
 			if (matrix[mid / column][mid % column] > target) {
 				end = mid - 1;
 			} else if (matrix[mid / column][mid % column] < target) {

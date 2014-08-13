@@ -1,3 +1,8 @@
+/**
+ * Problem:
+ * Given two binary trees, write a function to check if they are equal or not.
+ * Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
+ */
 package tree.traversal;
 
 public class SameTree {
@@ -17,11 +22,15 @@ public class SameTree {
 			return false;
 		}
 
-		return p.val == q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+		// divide & conquer
+		boolean sameTree = p.val == q.val && isSameTree(p.left, q.left)
+				&& isSameTree(p.right, q.right);
+
+		return sameTree;
 	}
 
 	// Definition for binary tree
-	private static class TreeNode {
+	public static class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;

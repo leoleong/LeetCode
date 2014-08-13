@@ -39,6 +39,7 @@ public class SortList {
 		fast = slow.next;
 		slow.next = null;
 
+		// divide & conquer
 		ListNode l1 = sortList(dummy.next);
 		ListNode l2 = sortList(fast);
 		ListNode node = merge(l1, l2);
@@ -67,7 +68,7 @@ public class SortList {
 	}
 
 	// Definition for singly-linked list.
-	private static class ListNode {
+	public static class ListNode {
 		int val;
 		ListNode next;
 

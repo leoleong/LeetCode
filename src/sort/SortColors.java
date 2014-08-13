@@ -1,10 +1,23 @@
+/**
+ * Problem:
+ * Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, 
+ * with the colors in the order red, white and blue.
+ * Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.
+ * 
+ * Note:
+ * You are not suppose to use the library's sort function for this problem.
+ * 
+ * Follow up:
+ * A rather straight forward solution is a two-pass algorithm using counting sort.
+ * First, iterate the array counting number of 0's, 1's, and 2's, 
+ * then overwrite array with total number of 0's, then 1's and followed by 2's.
+ * 
+ * Could you come up with an one-pass algorithm using only constant space?
+ */
 package sort;
 
 import java.util.Arrays;
 
-/**
- * author : leo date : 2014-5-19 comment : swap函数在数组中交换特别注意，异或版本的swap可能不适合 循环不变式
- */
 public class SortColors {
 
 	public static void main(String[] args) {
@@ -13,24 +26,8 @@ public class SortColors {
 		sortColors(A);
 		System.out.println(Arrays.toString(A));
 	}
-	
-	// 2. counting sort (not stable tranformation) : O(2*n)
-	public static void sortColors_1(int[] A){
-		
-		int[] count = new int[3];
-		for (int a : A) {
-			count[a] += 1;
-		}
-		
-		int index = 0;
-		for (int i = 0; i < count.length; i++) {
-			for (int j = 0; j < count[i]; j++) {
-				A[index++] = i;
-			}
-		}
-	}
 
-	// 1. loop invariant : O(n)
+	// Method 1: loop invariant : O(n)
 	public static void sortColors(int A[]) {
 
 		int i, j, k;
@@ -48,10 +45,26 @@ public class SortColors {
 		}
 	}
 
-	private static void swap(int[] A, int m, int n) {
+	// Method 2: counting sort (not stable tranformation) : O(2*n)
+	public static void sortColors_1(int[] A) {
 
-		int tmp = A[m];
-		A[m] = A[n];
-		A[n] = tmp;
+		int[] count = new int[3];
+		for (int a : A) {
+			count[a] += 1;
+		}
+
+		int index = 0;
+		for (int i = 0; i < count.length; i++) {
+			for (int j = 0; j < count[i]; j++) {
+				A[index++] = i;
+			}
+		}
+	}
+
+	private static void swap(int[] A, int src, int dst) {
+
+		int temp = A[src];
+		A[src] = A[dst];
+		A[dst] = temp;
 	}
 }

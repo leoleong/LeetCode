@@ -1,3 +1,7 @@
+/**
+ * Problem:
+ * Sort a linked list using insertion sort.
+ */
 package sort;
 
 public class InsertionSortList {
@@ -51,7 +55,7 @@ public class InsertionSortList {
 	}
 
 	// Definition for singly-linked list.
-	private static class ListNode {
+	public static class ListNode {
 		int val;
 		ListNode next;
 

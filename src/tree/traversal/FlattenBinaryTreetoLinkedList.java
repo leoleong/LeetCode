@@ -1,3 +1,28 @@
+/**
+ * Problem:
+ * Given a binary tree, flatten it to a linked list in-place.
+ * 
+ * For example,
+ * Given
+ * 		1
+ * 	   / \
+ * 	  2   5
+ * 	 / \   \
+ * 	3   4   6
+ * The flattened tree should look like:
+ * 	1
+ * 	 \
+ * 	  2
+ * 	   \
+ * 		3
+ * 		 \
+ * 		  4
+ * 		   \
+ * 			5
+ * 
+ * Hints:
+ * If you notice carefully in the flattened tree, each node's right child points to the next node of a pre-order traversal.
+ */
 package tree.traversal;
 
 public class FlattenBinaryTreetoLinkedList {
@@ -8,7 +33,6 @@ public class FlattenBinaryTreetoLinkedList {
 
 	public static void flatten(TreeNode root) {
 
-		// convergence condition
 		if (root == null) {
 			return;
 		}
@@ -29,8 +53,7 @@ public class FlattenBinaryTreetoLinkedList {
 	}
 
 	// Definition for binary tree
-	private static class TreeNode {
-
+	public static class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;

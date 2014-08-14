@@ -28,13 +28,13 @@ public class MedianofTwoSortedArrays {
 
 	private static int helper(int[] A, int aStart, int[] B, int bStart, int k) {
 
+		// convergence condition
 		if (aStart >= A.length) {
 			return B[bStart + k - 1];
 		}
 		if (bStart >= B.length) {
 			return A[aStart + k - 1];
 		}
-
 		if (k == 1) {
 			return Math.min(A[aStart], B[bStart]);
 		}

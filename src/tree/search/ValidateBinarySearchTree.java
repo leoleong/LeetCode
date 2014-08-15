@@ -1,3 +1,11 @@
+/**
+ * Problem:
+ * Given a binary tree, determine if it is a valid binary search tree (BST).
+ * Assume a BST is defined as follows:
+ * 	- The left subtree of a node contains only nodes with keys less than the node's key.
+ * 	- The right subtree of a node contains only nodes with keys greater than the node's key.
+ * 	- Both the left and right subtrees must also be binary search trees.
+ */
 package tree.search;
 
 public class ValidateBinarySearchTree {
@@ -22,7 +30,11 @@ public class ValidateBinarySearchTree {
 			return false;
 		}
 		
-		return isValidBST(root.left, lower, root.val) && isValidBST(root.right, root.val, upper);
+		// divide & conquer
+		boolean left = isValidBST(root.left, lower, root.val);
+		boolean right = isValidBST(root.right, root.val, upper);
+
+		return left && right;
 	}
 
 	// Definition for binary tree
@@ -33,8 +45,6 @@ public class ValidateBinarySearchTree {
 
 		TreeNode(int x) {
 			val = x;
-			left = null;
-			right = null;
 		}
 	}
 }

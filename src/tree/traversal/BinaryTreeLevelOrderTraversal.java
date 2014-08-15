@@ -82,7 +82,6 @@ public class BinaryTreeLevelOrderTraversal {
 
 	// Definition for binary tree
 	public class TreeNode {
-
 		int val;
 		TreeNode left;
 		TreeNode right;

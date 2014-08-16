@@ -1,3 +1,7 @@
+/**
+ * Problem:
+ * Sort a linked list in O(n log n) time using constant space complexity.
+ */
 package sort;
 
 public class SortList {
@@ -26,11 +30,22 @@ public class SortList {
 		if (head == null || head.next == null) {
 			return head;
 		}
-		
-		ListNode dummy = new ListNode(-1);
-		dummy.next = head;
-		ListNode slow, fast;
-		slow = fast = dummy;
+
+		ListNode middle = findMiddle(head);
+
+		// divide & conquer
+		ListNode l1 = sortList(head);
+		ListNode l2 = sortList(middle);
+		ListNode node = merge(l1, l2);
+
+		return node;
+	}
+
+	private static ListNode findMiddle(ListNode head) {
+
+		// head != null && head.next != null
+		ListNode slow = head;
+		ListNode fast = head.next;
 
 		while (fast != null && fast.next != null) {
 			slow = slow.next;
@@ -39,12 +54,7 @@ public class SortList {
 		fast = slow.next;
 		slow.next = null;
 
-		// divide & conquer
-		ListNode l1 = sortList(dummy.next);
-		ListNode l2 = sortList(fast);
-		ListNode node = merge(l1, l2);
-
-		return node;
+		return fast;
 	}
 
 	private static ListNode merge(ListNode l1, ListNode l2) {
@@ -74,7 +84,6 @@ public class SortList {
 
 		ListNode(int x) {
 			val = x;
-			next = null;
 		}
 	}
 }

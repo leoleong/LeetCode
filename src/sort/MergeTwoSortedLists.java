@@ -1,3 +1,8 @@
+/**
+ * Problem:
+ * Merge two sorted linked lists and return it as a new list. 
+ * The new list should be made by splicing together the nodes of the first two lists.
+ */
 package sort;
 
 public class MergeTwoSortedLists {
@@ -36,13 +41,12 @@ public class MergeTwoSortedLists {
 	}
 
 	// Definition for singly-linked list.
-	private static class ListNode {
+	public static class ListNode {
 		int val;
 		ListNode next;
 
 		ListNode(int x) {
 			val = x;
-			next = null;
 		}
 	}
 }

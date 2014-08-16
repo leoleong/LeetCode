@@ -1,3 +1,11 @@
+/**
+ * Problem:
+ * Given a sorted linked list, delete all duplicates such that each element appear only once.
+ * 
+ * For example,
+ * Given 1->1->2, return 1->2.
+ * Given 1->1->2->3->3, return 1->2->3.
+ */
 package linkedlist;
 
 import java.util.HashSet;
@@ -22,7 +30,28 @@ public class RemoveDuplicatesfromSortedList {
 		}
 	}
 
+	// Method 1: Space O(1)
 	public static ListNode deleteDuplicates(ListNode head) {
+
+		if (head == null || head.next == null) {
+			return head;
+		}
+
+		ListNode cur = head;
+		while (cur.next != null) {
+			ListNode next = cur.next;
+			if (cur.val == next.val) {
+				cur.next = next.next;
+			} else {
+				cur = cur.next;
+			}
+		}
+
+		return head;
+	}
+
+	// Method 2: Space O(n)
+	public static ListNode deleteDuplicatesUsingSet(ListNode head) {
 
 		HashSet<Integer> set = new HashSet<Integer>();
 		ListNode dummy = new ListNode(-1);
@@ -47,7 +76,6 @@ public class RemoveDuplicatesfromSortedList {
 
 		ListNode(int x) {
 			val = x;
-			next = null;
 		}
 	}
 }

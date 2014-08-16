@@ -1,3 +1,11 @@
+/**
+ * Problem:
+ * Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+ * 
+ * For example,
+ * Given 1->2->3->3->4->4->5, return 1->2->5.
+ * Given 1->1->1->2->3, return 2->3.
+ */
 package linkedlist;
 
 import java.util.HashMap;
@@ -22,7 +30,32 @@ public class RemoveDuplicatesfromSortedListII {
 		}
 	}
 
+	// Method 1: Space O(1)
 	public static ListNode deleteDuplicates(ListNode head) {
+
+		if (head == null || head.next == null) {
+			return head;
+		}
+
+		ListNode dummy = new ListNode(-1);
+		dummy.next = head;
+		ListNode cur = dummy;
+		while (cur.next != null && cur.next.next != null) {
+			if (cur.next.val == cur.next.next.val) {
+				int val = cur.next.val;
+				while (cur.next != null && cur.next.val == val) {
+					cur.next = cur.next.next;
+				}
+			} else {
+				cur = cur.next;
+			}
+		}
+
+		return dummy.next;
+	}
+
+	// Mehtod 2: Space O(n)
+	public static ListNode deleteDuplicatesUsingMap(ListNode head) {
 
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 		ListNode dummy = new ListNode(-1);
@@ -59,7 +92,6 @@ public class RemoveDuplicatesfromSortedListII {
 
 		ListNode(int x) {
 			val = x;
-			next = null;
 		}
 	}
 }

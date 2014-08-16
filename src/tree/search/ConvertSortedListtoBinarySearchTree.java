@@ -1,3 +1,7 @@
+/**
+ * Problem:
+ * Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+ */
 package tree.search;
 
 import java.util.ArrayList;
@@ -16,6 +20,7 @@ public class ConvertSortedListtoBinarySearchTree {
 		}
 
 		TreeNode tree = sortedListToBST(dummy.next);
+
 		System.out.println(tree.left.val);
 		System.out.println(tree.val);
 		System.out.println(tree.right.val);
@@ -36,19 +41,22 @@ public class ConvertSortedListtoBinarySearchTree {
 		return sortedListToBST(list, 0, length - 1);
 	}
 
-	private static TreeNode sortedListToBST(List<ListNode> list, int start, int end) {
+	private static TreeNode sortedListToBST(List<ListNode> list, int start,
+			int end) {
 
 		// convergence condition
 		if (start > end) {
 			return null;
 		}
 
-		int mid = (start + end) / 2;
+		int mid = start + (end - start) / 2;
 		TreeNode left = sortedListToBST(list, start, mid - 1);
 		TreeNode root = new TreeNode(list.get(0).val);
-		root.left = left;
 		list.set(0, list.get(0).next);
-		root.right = sortedListToBST(list, mid + 1, end);
+		TreeNode right = sortedListToBST(list, mid + 1, end);
+
+		root.left = left;
+		root.right = right;
 
 		return root;
 	}
@@ -60,7 +68,6 @@ public class ConvertSortedListtoBinarySearchTree {
 
 		ListNode(int x) {
 			val = x;
-			next = null;
 		}
 	}
 

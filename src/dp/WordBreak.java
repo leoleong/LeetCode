@@ -1,3 +1,13 @@
+/**
+ * Problem:
+ * Given a string s and a dictionary of words dict, 
+ * determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+ * 
+ * For example, given
+ * s = "leetcode",
+ * dict = ["leet", "code"].
+ * Return true because "leetcode" can be segmented as "leet code".
+ */
 package dp;
 
 import java.util.Arrays;
@@ -19,19 +29,18 @@ public class WordBreak {
 
 	public static boolean wordBreak(String s, Set<String> dict) {
 
-		int length = s.length() + 1;
-		boolean[] dp = new boolean[length];
+		boolean[] dp = new boolean[s.length() + 1];
 		dp[0] = true;
 
-		for (int i = 1; i < length; i++) {
-			for (int j = 0; j < i; j++) {
-				if (dp[j] && dict.contains(s.substring(j, i))) {
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 1; j <= i; j++) {
+				if (dict.contains(s.substring(j - 1, i)) && dp[j - 1]) {
 					dp[i] = true;
 					break;
 				}
 			}
 		}
 
-		return dp[length - 1];
+		return dp[s.length()];
 	}
 }

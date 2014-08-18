@@ -34,6 +34,7 @@ public class WordBreak {
 
 		for (int i = 1; i < dp.length; i++) {
 			for (int j = 1; j <= i; j++) {
+				// Could optimize according to word length
 				if (dict.contains(s.substring(j - 1, i)) && dp[j - 1]) {
 					dp[i] = true;
 					break;

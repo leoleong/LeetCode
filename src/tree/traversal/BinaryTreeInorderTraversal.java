@@ -39,14 +39,14 @@ public class BinaryTreeInorderTraversal {
 		if (node == null) {
 			return;
 		}
-		
+
 		dfs(result, node.left);
 		result.add(node.val);
 		dfs(result, node.right);
 	}
 
 	// Method 2: stack method, simulate recursion
-	public static List<Integer> inorderTraversal_1(TreeNode root) {
+	public static List<Integer> inorderTraversalWithStack(TreeNode root) {
 
 		List<Integer> result = new ArrayList<Integer>();
 		Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
@@ -66,7 +66,7 @@ public class BinaryTreeInorderTraversal {
 	}
 
 	// Method 3: morris method
-	public static List<Integer> inorderTraversal_2(TreeNode root) {
+	public static List<Integer> inorderTraversalWithMorris(TreeNode root) {
 
 		List<Integer> result = new ArrayList<Integer>();
 		TreeNode cur, node;
@@ -97,7 +97,6 @@ public class BinaryTreeInorderTraversal {
 		return result;
 	}
 
-	// ------------------------------------------------------------------------
 	// Definition for binary tree
 	public class TreeNode {
 		int val;

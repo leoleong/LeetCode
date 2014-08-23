@@ -19,7 +19,7 @@ public class JumpGameII {
 		System.out.println(result);
 	}
 
-	// Method 1: Sequence DP(LTE)
+	// Method 1: Sequence DP
 	public static int jump(int[] A) {
 
 		if (A.length <= 1) {
@@ -34,6 +34,7 @@ public class JumpGameII {
 			for (int j = 0; j < i; j++) {
 				if (A[j] + j >= i && dp[j] + 1 < dp[i]) {
 					dp[i] = dp[j] + 1;
+					break;
 				}
 			}
 		}

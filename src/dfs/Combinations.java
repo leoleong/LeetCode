@@ -13,7 +13,7 @@
  * 	[1,4],
  * ]
  */
-package exhaustion;
+package dfs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class Combinations {
 	public static void main(String[] args) {
 
 		List<List<Integer>> result = combine(4, 2);
-		
+
 		for (List<Integer> path : result) {
 			System.out.println(path.toString());
 		}
@@ -39,13 +39,14 @@ public class Combinations {
 		return result;
 	}
 
-	private static void dfs(List<List<Integer>> result, List<Integer> path, int start, int n, int k) {
+	private static void dfs(List<List<Integer>> result, List<Integer> path,
+			int start, int n, int k) {
 
 		if (path.size() == k) {
 			result.add(new ArrayList<Integer>(path));
 			return;
 		}
-		
+
 		for (int i = start; i <= n; i++) {
 			path.add(i);
 			dfs(result, path, i + 1, n, k);

@@ -1,8 +1,10 @@
 /**
  * Problem:
- * The n-queens puzzle is the problem of placing n queens on an n¡Án chessboard such that no two queens attack each other.
+ * The n-queens puzzle is the problem of placing n queens on an n*n chessboard 
+ * such that no two queens attack each other.
  * Given an integer n, return all distinct solutions to the n-queens puzzle.
- * Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
+ * Each solution contains a distinct board configuration of the n-queens' placement, 
+ * where 'Q' and '.' both indicate a queen and an empty space respectively.
  * 
  * For example,
  * There exist two distinct solutions to the 4-queens puzzle:
@@ -50,7 +52,7 @@ public class NQueens {
 	private static void dfs(List<String[]> result, int[] path, int row) {
 
 		int N = path.length;
-		
+
 		if (row == N) {
 			String[] strs = new String[N];
 			for (int i = 0; i < N; i++) {
@@ -67,7 +69,7 @@ public class NQueens {
 			result.add(strs);
 			return;
 		}
-		
+
 		for (int j = 0; j < N; j++) {
 			if (isValid(path, row, j)) {
 				path[row] = j;

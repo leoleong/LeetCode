@@ -11,7 +11,7 @@
  * 1. sort + dfs (realized)
  * 2. count + dfs
  */
-package exhaustion;
+package dfs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +32,10 @@ public class Permutations {
 	public static List<List<Integer>> permute(int[] nums) {
 
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if (nums == null || nums.length == 0) {
+			return result;
+		}
+
 		List<Integer> path = new ArrayList<Integer>();
 		boolean[] used = new boolean[nums.length];
 

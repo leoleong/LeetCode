@@ -54,6 +54,7 @@ public class PalindromePartitioning {
 		}
 	}
 
+	// also could use a array[][] to store information of palindrome substring
 	private static boolean isPalindrome(String s, int start, int end) {
 
 		while (start <= end && s.charAt(start) == s.charAt(end)) {

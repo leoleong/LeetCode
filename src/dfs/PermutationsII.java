@@ -6,7 +6,7 @@
  * [1,1,2] have the following unique permutations:
  * [1,1,2], [1,2,1], and [2,1,1].
  */
-package exhaustion;
+package dfs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +28,10 @@ public class PermutationsII {
 	public static List<List<Integer>> permuteUnique(int[] nums) {
 
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if (nums == null || nums.length == 0) {
+			return result;
+		}
+
 		List<Integer> path = new ArrayList<Integer>();
 		boolean[] used = new boolean[nums.length];
 
@@ -37,13 +41,14 @@ public class PermutationsII {
 		return result;
 	}
 
-	private static void dfs(List<List<Integer>> result, List<Integer> path, boolean[] used, int[] nums) {
+	private static void dfs(List<List<Integer>> result, List<Integer> path,
+			boolean[] used, int[] nums) {
 
 		if (path.size() == nums.length) {
 			result.add(new ArrayList<Integer>(path));
 			return;
 		}
-		
+
 		for (int i = 0; i < nums.length; i++) {
 			if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
 				continue;

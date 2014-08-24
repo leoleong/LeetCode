@@ -19,7 +19,7 @@
  * 	[]
  * ]
  */
-package exhaustion;
+package dfs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class Subsets {
 	public static void main(String[] args) {
 
 		int[] S = new int[] { 2, 3, 1 };
-		
+
 		List<List<Integer>> result = subsets(S);
 
 		for (List<Integer> path : result) {
@@ -41,15 +41,21 @@ public class Subsets {
 	public static List<List<Integer>> subsets(int[] S) {
 
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if (S == null || S.length == 0) {
+			return result;
+		}
+
 		List<Integer> path = new ArrayList<Integer>();
 
-//		Arrays.sort(S);
+		// non-descending order
+		Arrays.sort(S);
 		dfs(result, path, S, 0);
 
 		return result;
 	}
 
-	private static void dfs(List<List<Integer>> result, List<Integer> path, int[] S, int start) {
+	private static void dfs(List<List<Integer>> result, List<Integer> path,
+			int[] S, int start) {
 
 		result.add(new ArrayList<Integer>(path));
 

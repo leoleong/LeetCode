@@ -1,3 +1,22 @@
+/**
+ * Problem:
+ * Given two words (start and end), and a dictionary, 
+ * find the length of shortest transformation sequence from start to end, such that:
+ * 	- Only one letter can be changed at a time
+ * 	- Each intermediate word must exist in the dictionary
+ * 
+ * For example, Given:
+ * start = "hit"
+ * end = "cog"
+ * dict = ["hot","dot","dog","lot","log"]
+ * As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+ * return its length 5.
+ * 
+ * Note:
+ * 	- Return 0 if there is no such transformation sequence.
+ * 	- All words have the same length.
+ * 	- All words contain only lowercase alphabetic characters.
+ */
 package bfs;
 
 import java.util.ArrayDeque;
@@ -14,11 +33,16 @@ public class WordLadder {
 		String start = "qa";
 		String end = "sq";
 		Set<String> dict = new HashSet<String>();
-		String[] strings = new String[] { "si", "go", "se", "cm", "so", "ph", "mt", "db", "mb", "sb", "kr", "ln", "tm", "le", "av", "sm",
-				"ar", "ci", "ca", "br", "ti", "ba", "to", "ra", "fa", "yo", "ow", "sn", "ya", "cr", "po", "fe", "ho", "ma", "re", "or",
-				"rn", "au", "ur", "rh", "sr", "tc", "lt", "lo", "as", "fr", "nb", "yb", "if", "pb", "ge", "th", "pm", "rb", "sh", "co",
-				"ga", "li", "ha", "hz", "no", "bi", "di", "hi", "qa", "pi", "os", "uh", "wm", "an", "me", "mo", "na", "la", "st", "er",
-				"sc", "ne", "mn", "mi", "am", "ex", "pt", "io", "be", "fm", "ta", "tb", "ni", "mr", "pa", "he", "lr", "sq", "ye" };
+		String[] strings = new String[] { "si", "go", "se", "cm", "so", "ph",
+				"mt", "db", "mb", "sb", "kr", "ln", "tm", "le", "av", "sm",
+				"ar", "ci", "ca", "br", "ti", "ba", "to", "ra", "fa", "yo",
+				"ow", "sn", "ya", "cr", "po", "fe", "ho", "ma", "re", "or",
+				"rn", "au", "ur", "rh", "sr", "tc", "lt", "lo", "as", "fr",
+				"nb", "yb", "if", "pb", "ge", "th", "pm", "rb", "sh", "co",
+				"ga", "li", "ha", "hz", "no", "bi", "di", "hi", "qa", "pi",
+				"os", "uh", "wm", "an", "me", "mo", "na", "la", "st", "er",
+				"sc", "ne", "mn", "mi", "am", "ex", "pt", "io", "be", "fm",
+				"ta", "tb", "ni", "mr", "pa", "he", "lr", "sq", "ye" };
 		for (String string : strings) {
 			dict.add(string);
 		}
@@ -36,12 +60,12 @@ public class WordLadder {
 		queue.offer(start);
 		map.put(start, 1);
 		while (!queue.isEmpty()) {
-			String head = queue.poll();
-			int level = map.get(head);
-			for (int i = 0; i < head.length(); i++) {
-				StringBuilder sb = new StringBuilder(head);
+			String current = queue.poll();
+			int level = map.get(current);
+			for (int i = 0; i < current.length(); i++) {
+				StringBuilder sb = new StringBuilder(current);
 				for (char ch = 'a'; ch <= 'z'; ch++) {
-					if (head.charAt(i) == ch) {
+					if (current.charAt(i) == ch) {
 						continue;
 					}
 					sb.setCharAt(i, ch);

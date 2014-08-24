@@ -17,7 +17,7 @@
  * 	[]
  * ]
  */
-package exhaustion;
+package dfs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,6 +39,10 @@ public class SubsetsII {
 	public static List<List<Integer>> subsetsWithDup(int[] num) {
 
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if (num == null || num.length == 0) {
+			return result;
+		}
+
 		List<Integer> path = new ArrayList<Integer>();
 
 		Arrays.sort(num);
@@ -47,7 +51,8 @@ public class SubsetsII {
 		return result;
 	}
 
-	private static void dfs(List<List<Integer>> result, List<Integer> path, int[] num, int start) {
+	private static void dfs(List<List<Integer>> result, List<Integer> path,
+			int[] num, int start) {
 
 		result.add(new ArrayList<Integer>(path));
 

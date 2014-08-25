@@ -5,7 +5,7 @@
  * 
  * Note:
  * All numbers (including target) will be positive integers.
- * Elements in a combination (a1, a2, ¡­ , ak) must be in non-descending order. (ie, a1 ¡Ü a2 ¡Ü ¡­ ¡Ü ak).
+ * Elements in a combination (a1, a2, ..., ak) must be in non-descending order. (ie, a1 <=a2 <=...<= ak).
  * The solution set must not contain duplicate combinations.
  * 
  * For example, given candidate set 10,1,2,7,6,1,5 and target 8,
@@ -55,6 +55,7 @@ public class CombinationSumII {
 		}
 
 		for (int i = start; i < num.length; i++) {
+			// consider it as the same level of a tree
 			if (i > start && num[i] == num[i - 1]) {
 				continue;
 			}

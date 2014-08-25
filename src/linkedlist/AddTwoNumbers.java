@@ -1,3 +1,12 @@
+/**
+ * Problem:
+ * You are given two linked lists representing two non-negative numbers. 
+ * The digits are stored in reverse order and each of their nodes contain a single digit. 
+ * Add the two numbers and return it as a linked list.
+ * 
+ * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+ * Output: 7 -> 0 -> 8
+ */
 package linkedlist;
 
 public class AddTwoNumbers {
@@ -58,7 +67,7 @@ public class AddTwoNumbers {
 			cur.val = l2.val % 10;
 			l2 = l2.next;
 		}
-		if (carry == 1) {
+		if (carry > 0) {
 			cur.next = new ListNode(1);
 		}
 
@@ -66,7 +75,7 @@ public class AddTwoNumbers {
 	}
 
 	// Definition for singly-linked list.
-	private static class ListNode {
+	public static class ListNode {
 		int val;
 		ListNode next;
 

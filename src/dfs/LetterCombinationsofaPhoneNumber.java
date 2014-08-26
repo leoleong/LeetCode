@@ -9,14 +9,12 @@
  * Note:
  * Although the above answer is in lexicographical order, your answer could be in any order you want.
  */
-package exhaustion;
+package dfs;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LetterCombinationsofaPhoneNumber {
-
-	private static String[] map;
 
 	public static void main(String[] args) {
 
@@ -31,27 +29,30 @@ public class LetterCombinationsofaPhoneNumber {
 
 	public static List<String> letterCombinations(String digits) {
 
-		map = new String[] { " ", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+		String[] map = new String[] { " ", "", "abc", "def", "ghi", "jkl",
+				"mno", "pqrs", "tuv", "wxyz" };
 		List<String> result = new ArrayList<String>();
 		StringBuilder path = new StringBuilder(digits.length());
 
 		digits = digits.replaceAll("1", "");
-		dfs(result, path, digits, 0);
+		dfs(result, path, map, digits, 0);
 
 		return result;
 	}
 
-	private static void dfs(List<String> result, StringBuilder path, String digits, int start) {
+	private static void dfs(List<String> result, StringBuilder path,
+			String[] map, String digits, int start) {
 
 		if (start == digits.length()) {
 			result.add(path.toString());
 			return;
 		}
-		
+
 		int index = digits.charAt(start) - '0';
-		for (int i = 0; i < map[index].length(); i++) {
-			path.append(map[index].charAt(i));
-			dfs(result, path, digits, start + 1);
+		String str = map[index];
+		for (int i = 0; i < str.length(); i++) {
+			path.append(str.charAt(i));
+			dfs(result, path, map, digits, start + 1);
 			path.deleteCharAt(path.length() - 1);
 		}
 	}

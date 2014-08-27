@@ -1,3 +1,9 @@
+/**
+ * Problem:
+ * A linked list is given such that each node contains an additional random pointer 
+ * which could point to any node in the list or null.
+ * Return a deep copy of the list.
+ */
 package linkedlist;
 
 public class CopyListwithRandomPointer {
@@ -8,32 +14,38 @@ public class CopyListwithRandomPointer {
 
 	public static RandomListNode copyRandomList(RandomListNode head) {
 
-		RandomListNode dummy = new RandomListNode(-1);
-		dummy.next = head;
-		RandomListNode cur = head;
-
-		while (head != null) {
-			cur = new RandomListNode(head.label);
-			cur.next = head.next;
-			head.next = cur;
-			head = cur.next;
+		if (head == null) {
+			return null;
 		}
 
-		head = dummy.next;
-		while (head != null) {
-			if (head.random != null) {
-				head.next.random = head.random.next;
+		RandomListNode node = head;
+
+		// copy nodes and next pointer
+		while (node != null) {
+			RandomListNode cur = new RandomListNode(node.label);
+			cur.next = node.next;
+			node.next = cur;
+			node = cur.next;
+		}
+
+		// copy random pointer
+		node = head;
+		while (node != null) {
+			if (node.random != null) {
+				node.next.random = node.random.next;
 			}
-			head = head.next.next;
+			node = node.next.next;
 		}
 
-		head = dummy.next;
-		cur = dummy;
-		while (head != null) {
-			cur.next = head.next;
+		// seperate list
+		RandomListNode dummy = new RandomListNode(Integer.MIN_VALUE);
+		RandomListNode cur = dummy;
+		node = head;
+		while (node != null) {
+			cur.next = node.next;
 			cur = cur.next;
-			head.next = cur.next;
-			head = head.next;
+			node.next = cur.next;
+			node = node.next;
 		}
 
 		return dummy.next;

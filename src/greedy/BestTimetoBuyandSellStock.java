@@ -1,3 +1,9 @@
+/**
+ * Problem:
+ * Say you have an array for which the ith element is the price of a given stock on day i.
+ * If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), 
+ * design an algorithm to find the maximum profit.
+ */
 package greedy;
 
 public class BestTimetoBuyandSellStock {
@@ -9,11 +15,10 @@ public class BestTimetoBuyandSellStock {
 		System.out.println(result);
 	}
 
-	// it's more like DP instead of GREEDY
 	public static int maxProfit(int[] prices) {
 
 		// special test case
-		if (prices.length < 2) {
+		if (prices == null || prices.length < 2) {
 			return 0;
 		}
 

@@ -49,10 +49,10 @@ public class LRUCache {
 			Node node = new Node(key, value);
 			map.put(key, node);
 			attach(node);
-			if (map.size() == capacity) {
+			if (map.size() > capacity) {
 				Node last = head.prev;
 				detach(last);
-				map.remove(last);
+				map.remove(last.key);
 			}
 		}
 	}

@@ -34,6 +34,7 @@ public class GenerateParentheses {
 		if (left < right) {
 			return;
 		}
+		
 		if (left == size && right == size) {
 			result.add(path);
 			return;

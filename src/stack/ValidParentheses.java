@@ -1,41 +1,38 @@
+/**
+ * Problem:
+ * Given a string containing just the characters '(', ')', '{', '}', '[' and ']', 
+ * determine if the input string is valid.
+ * The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
+ */
 package stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-/**
- * author : leo
- * date : 2014-5-19
- * comment : 
- * stack使用ArrayDequeue:stack性能优于Stack,queue性能优于LinkedList
- */
 public class ValidParentheses {
 
 	public static void main(String[] args) {
 
 		String s = "(){}()[]";
-
 		boolean result = isValid(s);
-
 		System.out.println(result);
 	}
 
-	public static boolean isValid(String s) {
+	private static boolean isValid(String s) {
 
 		String left = "([{";
 		String right = ")]}";
 		Deque<Integer> stack = new ArrayDeque<Integer>();
-		char ch;
-		int index;
 
 		for (int i = 0; i < s.length(); i++) {
-			ch = s.charAt(i);
-			index = left.indexOf(ch);
-			if (index != -1) {
-				stack.push(index);
+			char ch = s.charAt(i);
+			int idx = left.indexOf(ch);
+
+			if (idx != -1) {
+				stack.push(idx);
 			} else {
-				index = right.indexOf(ch);
-				if (stack.isEmpty() || stack.pop() != index) {
+				idx = right.indexOf(ch);
+				if (stack.isEmpty() || stack.pop() != idx) {
 					return false;
 				}
 			}

@@ -38,7 +38,9 @@ public class ConvertSortedListtoBinarySearchTree {
 		list.add(head);
 
 		// inorder traversal
-		return sortedListToBST(list, 0, length - 1);
+		TreeNode root = sortedListToBST(list, 0, length - 1);
+
+		return root;
 	}
 
 	private static TreeNode sortedListToBST(List<ListNode> list, int start,

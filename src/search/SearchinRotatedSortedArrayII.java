@@ -5,7 +5,7 @@
  * Would this affect the run-time complexity? How and why?
  * Write a function to determine if a given target is in the array.
  */
-package array;
+package search;
 
 public class SearchinRotatedSortedArrayII {
 

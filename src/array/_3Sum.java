@@ -4,7 +4,7 @@
  * Find all unique triplets in the array which gives the sum of zero.
  * 
  * Note:
- * 	- Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ≤ b ≤ c)
+ * 	- Elements in a triplet (a,b,c) must be in non-descending order. (ie, a<=b<=c)
  * 	- The solution set must not contain duplicate triplets.
  * 
  * For example, given array S = {-1 0 1 2 -1 -4},
@@ -31,13 +31,13 @@ public class _3Sum {
 	// Method 1: 2 pointer
 	public static List<List<Integer>> threeSum(int[] num) {
 
-		List<List<Integer>> result = new ArrayList<List<Integer>>();
-
 		if (num == null || num.length < 3) {
-			return result;
+			return new ArrayList<List<Integer>>();
 		}
 
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		Arrays.sort(num);
+
 		for (int i = 0; i <= num.length - 3 && num[i] <= 0; i++) {
 			if (i > 0 && num[i] == num[i - 1]) {
 				continue;
@@ -74,14 +74,13 @@ public class _3Sum {
 	// Method 2: HashMap
 	public static ArrayList<ArrayList<Integer>> hashThreeSum(int[] num) {
 
-		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-
 		if (num == null || num.length < 3) {
-			return result;
+			return new ArrayList<ArrayList<Integer>>();
 		}
 
-		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>(
-				num.length);
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
 		for (int i : num) {
 			if (map.containsKey(i)) {
 				int value = map.get(i) + 1;

@@ -21,7 +21,7 @@ public class _3SumClosest {
 	public static int threeSumClosest(int[] num, int target) {
 
 		if (num == null || num.length < 3) {
-			return Integer.MAX_VALUE;
+			return Integer.MIN_VALUE;
 		}
 
 		Arrays.sort(num);

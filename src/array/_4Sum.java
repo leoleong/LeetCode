@@ -4,7 +4,7 @@
  * Find all unique quadruplets in the array which gives the sum of target.
  * 
  * Note:
- * 	- Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a ≤ b ≤ c ≤ d)
+ * 	- Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a<=b<=c<=d)
  * 	- The solution set must not contain duplicate quadruplets.
  * For example, given array S = {1 0 -1 0 -2 2}, and target = 0.
  * A solution set is:
@@ -29,13 +29,13 @@ public class _4Sum {
 
 	public static List<List<Integer>> fourSum(int[] num, int target) {
 
-		List<List<Integer>> result = new ArrayList<List<Integer>>();
-
 		if (num == null || num.length < 4) {
-			return result;
+			return new ArrayList<List<Integer>>();
 		}
 
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		Arrays.sort(num);
+
 		for (int i = 0; i <= num.length - 4 && num[i] <= target / 4; i++) {
 			if (i > 0 && num[i] == num[i - 1]) {
 				continue;
@@ -47,7 +47,8 @@ public class _4Sum {
 				int k = j + 1;
 				int l = num.length - 1;
 				while (k < l) {
-					if (num[i] + num[j] + num[k] + num[l] == target) {
+					int sum = num[i] + num[j] + num[k] + num[l];
+					if (sum == target) {
 						ArrayList<Integer> list = new ArrayList<Integer>();
 						list.add(num[i]);
 						list.add(num[j]);
@@ -62,7 +63,7 @@ public class _4Sum {
 						while (k < l && num[l] == num[l + 1]) {
 							l--;
 						}
-					} else if (num[i] + num[j] + num[k] + num[l] < target) {
+					} else if (sum < target) {
 						k++;
 					} else {
 						l--;

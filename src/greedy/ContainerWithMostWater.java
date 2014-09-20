@@ -1,31 +1,34 @@
+/**
+ * Problem:
+ * Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai). 
+ * n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). 
+ * Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+ * 
+ * Note: 
+ * You may not slant the container.
+ */
 package greedy;
 
-/**
- * author : leo
- * date : 2014-5-16
- * comment : 
- * 体会"一边扫，两边依次扫，两边同时扫"
- */
 public class ContainerWithMostWater {
 
 	public static void main(String[] args) {
 
 	}
 
+	// greedy could reach global optimum
 	public static int maxArea(int[] height) {
 
-		int cur, max;
-		cur = max = 0;
-		int start = 0;
-		int end = height.length - 1;
+		int left = 0;
+		int right = height.length - 1;
+		int max = 0;
 
-		while (start < end) {
-			cur = Math.min(height[start], height[end]) * (end - start);
+		while (left < right) {
+			int cur = Math.min(height[left], height[right]) * (right - left);
 			max = Math.max(max, cur);
-			if (height[start] < height[end]) {
-				start++;
+			if (height[left] < height[right]) {
+				left++;
 			} else {
-				end--;
+				right--;
 			}
 		}
 

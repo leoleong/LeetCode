@@ -1,53 +1,60 @@
+/**
+ * Problem:
+ * Given a 2D binary matrix filled with 0's and 1's, 
+ * find the largest rectangle containing all ones and return its area.
+ */
 package dp;
+
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
 
 public class MaximalRectangle {
 
 	public static void main(String[] args) {
 
-		char[][] matrix = new char[][] { { '0', '0', '0' }, { '0', '0', '0' }, { '1', '1', '1' } };
+		char[][] matrix = new char[][] { { '0', '0', '0' }, { '0', '0', '0' },
+				{ '1', '1', '1' } };
 		int result = maximalRectangle(matrix);
 		System.out.println(result);
 	}
 
-	public static int maximalRectangle(char[][] matrix) {
+	private static int maximalRectangle(char[][] matrix) {
 
-		// special test case
-		if (matrix.length == 0) {
+		if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
 			return 0;
 		}
-		
-		// functional test case
+
 		int max = 0;
-		int left, right;
-		int row = matrix.length;
-		int column = matrix[0].length;
-		int[] L = new int[column];
-		int[] R = new int[column];
-		int[] H = new int[column];
-		for (int i = 0; i < column; i++) {
-			R[i] = column;
+		int[] height = new int[matrix[0].length];
+
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length; j++) {
+				height[j] = matrix[i][j] == '0' ? 0 : height[j] + 1;
+			}
+			max = Math.max(max, largestRectangleArea(height));
 		}
 
-		for (int i = 0; i < row; i++) {
-			left = 0;
-			right = column;
-			for (int j = 0; j < column; j++) {
-				if (matrix[i][j] == '1') {
-					H[j]++;
-					L[j] = Math.max(L[j], left);
-				} else {
-					H[j] = L[j] = 0;
-					R[j] = column;
-					left = j + 1;
-				}
-			}
-			for (int j = column - 1; j >= 0; j--) {
-				if (matrix[i][j] == '1') {
-					R[j] = Math.min(R[j], right);
-					max = Math.max(max, H[j] * (R[j] - L[j]));
-				} else {
-					right = j;
-				}
+		return max;
+	}
+
+	private static int largestRectangleArea(int[] height) {
+
+		if (height == null || height.length == 0) {
+			return 0;
+		}
+
+		Deque<Integer> stack = new ArrayDeque<Integer>();
+		int[] h = Arrays.copyOf(height, height.length + 1);
+		int max = 0;
+
+		for (int i = 0; i < h.length;) {
+			if (stack.isEmpty() || h[stack.peek()] <= h[i]) {
+				stack.push(i++);
+			} else {
+				int index = stack.pop();
+				int width = stack.isEmpty() ? i : (i - 1) - stack.peek();
+				max = Math.max(max, h[index] * width);
 			}
 		}
 

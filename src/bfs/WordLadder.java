@@ -52,7 +52,7 @@ public class WordLadder {
 		System.out.println(result);
 	}
 
-	public static int ladderLength(String start, String end, Set<String> dict) {
+	private static int ladderLength(String start, String end, Set<String> dict) {
 
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		Queue<String> queue = new ArrayDeque<String>();

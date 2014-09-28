@@ -1,3 +1,14 @@
+/**
+ * Problem:
+ * Given a string s and a dictionary of words dict, 
+ * add spaces in s to construct a sentence where each word is a valid dictionary word.
+ * Return all such possible sentences.
+ * 
+ * For example, given
+ * s = "catsanddog",
+ * dict = ["cat", "cats", "and", "sand", "dog"].
+ * A solution is ["cats and dog", "cat sand dog"].
+ */
 package dp;
 
 import java.util.ArrayList;
@@ -13,7 +24,8 @@ public class WordBreakII {
 
 		String s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab";
 		Set<String> dict = new HashSet<String>();
-		String[] strs = { "a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa" };
+		String[] strs = { "a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa",
+				"aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa" };
 		dict.addAll(Arrays.asList(strs));
 
 		List<String> result = wordBreak(s, dict);
@@ -43,7 +55,8 @@ public class WordBreakII {
 		return result;
 	}
 
-	private static void dfs(List<String> result, List<String> path, boolean[][] pos, String s, int start) {
+	private static void dfs(List<String> result, List<String> path,
+			boolean[][] pos, String s, int start) {
 
 		int length = s.length();
 		if (start == length) {

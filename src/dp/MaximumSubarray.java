@@ -29,7 +29,7 @@ public class MaximumSubarray {
 
 		// normal test case
 		int dp = A[0];
-		int max = dp;
+		int max = A[0];
 
 		for (int i = 1; i < A.length; i++) {
 			dp = Math.max(dp + A[i], A[i]);

@@ -1,12 +1,9 @@
+/**
+ * Problem:
+ * Implement pow(x, n).
+ */
 package conquer;
 
-/**
- * author : leo
- * date : 2014-5-15
- * comment : 
- * 分而治之+减而治之
- * 递归栈尽量不要太深
- */
 public class Pow {
 
 	public static void main(String[] args) {
@@ -31,7 +28,7 @@ public class Pow {
 		if (expo == 0) {
 			return 1;
 		}
-		
+
 		// use bit OP instead
 		double multiplier = power(base, expo >> 1);
 		if ((expo & 1) == 0) {

@@ -7,9 +7,9 @@
  * The replacement must be in-place, do not allocate extra memory.
  * 
  * Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
- * 1,2,3 ¡ú 1,3,2
- * 3,2,1 ¡ú 1,2,3
- * 1,1,5 ¡ú 1,5,1
+ * 1,2,3 ï¿½ï¿½ 1,3,2
+ * 3,2,1 ï¿½ï¿½ 1,2,3
+ * 1,1,5 ï¿½ï¿½ 1,5,1
  * 
  * Follow-up question: 
  * could you implement previous permutation?
@@ -32,15 +32,13 @@ public class NextPermutation {
 
 		int[] nums = new int[] { 1, 3, 2 };
 
-//		nextPermutation(nums);
+		nextPermutation(nums);
 		previousPermutation(nums);
 
 		System.out.println(Arrays.toString(nums));
-		
 	}
 
 	public static void nextPermutation(int[] nums) {
-
 		int length = nums.length;
 		int index = length - 2;
 
@@ -62,7 +60,6 @@ public class NextPermutation {
 	}
 
 	public static void previousPermutation(int[] nums) {
-
 		int length = nums.length;
 		int index = length - 2;
 
@@ -84,14 +81,12 @@ public class NextPermutation {
 	}
 
 	private static void swap(int[] nums, int i, int j) {
-
 		int tmp = nums[i];
 		nums[i] = nums[j];
 		nums[j] = tmp;
 	}
 
 	private static void reverse(int[] nums, int l, int r) {
-
 		while (l < r) {
 			swap(nums, l++, r--);
 		}

@@ -1,47 +1,62 @@
+/**
+ * Problem:
+ * Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+ * 
+ * For example,
+ * Given [100, 4, 200, 1, 3, 2],
+ * The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
+ * Your algorithm should run in O(n) complexity.
+ */
 package array;
 
 import java.util.BitSet;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class LongestConsecutiveSequence {
 
 	public static void main(String[] args) {
 
 		int[] num = new int[] { 9, 1, -3, 2, 4, 8, 3, -1, 6, -2, -4, 7 };
-		System.out.println(longestConsecutive(num));
+		int result = longestConsecutive(num);
+		System.out.println(result);
 	}
 
 	public static int longestConsecutive(int[] num) {
-		HashMap<Integer, Boolean> map = new HashMap<Integer, Boolean>(num.length);
-		for (int i : num) {
-			map.put(i, false);
+
+		if (num == null || num.length == 0) {
+			return 0;
 		}
 
-		int max = 0;
-		int tmpMax = 1;
-		for (int key : map.keySet()) {
-			if (!map.get(key)) {
-				map.put(key, true);
-				int initialKey = key;
-				key = initialKey - 1;
-				while (map.containsKey(key)) {
-					map.put(key, true);
-					tmpMax += 1;
-					key--;
-				}
-				key = initialKey + 1;
-				while (map.containsKey(key)) {
-					map.put(key, true);
-					tmpMax += 1;
-					key++;
-				}
-				if (max < tmpMax) {
-					max = tmpMax;
-				}
-				tmpMax = 1;
+		int longest = 1;
+		HashSet<Integer> set = new HashSet<Integer>();
+		for (int i = 0; i < num.length; i++) {
+			set.add(num[i]);
+		}
+
+		while (!set.isEmpty()) {
+			Iterator<Integer> iterator = set.iterator();
+			int key = iterator.next();
+			set.remove(key);
+
+			int length = 1;
+			int temp = key - 1;
+			while (set.contains(temp)) {
+				set.remove(temp--);
+				length++;
+			}
+			temp = key + 1;
+			while (set.contains(temp)) {
+				set.remove(temp++);
+				length++;
+			}
+
+			if (longest < length) {
+				longest = length;
 			}
 		}
-		return max;
+
+		return longest;
 	}
 
 	// bitset solution
@@ -90,7 +105,8 @@ public class LongestConsecutiveSequence {
 			}
 			preIndex++;
 		}
-		if (negativeBitSet.nextSetBit(0) == 0 && negativeBitSet.nextSetBit(1) == 1) {
+		if (negativeBitSet.nextSetBit(0) == 0
+				&& negativeBitSet.nextSetBit(1) == 1) {
 			max = positiveMax + negativeMax - 1;
 		} else {
 			max = positiveMax + negativeMax;

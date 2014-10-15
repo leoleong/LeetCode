@@ -46,8 +46,9 @@ public class BinaryTreeMaximumPathSum {
 		if (sum > result.get(0)) {
 			result.set(0, sum);
 		}
+		int partial = root.val + left > right ? left : right;
 
-		return root.val + left > right ? left : right;
+		return partial;
 	}
 
 	// Definition for binary tree

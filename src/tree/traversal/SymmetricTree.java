@@ -31,7 +31,7 @@ public class SymmetricTree {
 		if (root == null) {
 			return true;
 		}
-		
+
 		TreeNode left = root.left;
 		TreeNode right = root.right;
 
@@ -49,10 +49,12 @@ public class SymmetricTree {
 			return false;
 		}
 
-		// divide & conquer
-		boolean symmetricTree = left.val == right.val
-				&& isSymmetric(left.left, right.right)
-				&& isSymmetric(left.right, right.left);
+		// divide
+		boolean l = isSymmetric(left.left, right.right);
+		boolean r = isSymmetric(left.right, right.left);
+
+		// conquer
+		boolean symmetricTree = left.val == right.val && l && r;
 
 		return symmetricTree;
 	}

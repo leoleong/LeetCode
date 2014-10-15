@@ -27,6 +27,7 @@ public class BinaryTreeMaximumPathSum {
 		}
 
 		List<Integer> result = new ArrayList<Integer>();
+		result.add(Integer.MIN_VALUE);
 		dfs(root, result);
 
 		return result.get(0);
@@ -46,7 +47,7 @@ public class BinaryTreeMaximumPathSum {
 		if (sum > result.get(0)) {
 			result.set(0, sum);
 		}
-		int partial = root.val + left > right ? left : right;
+		int partial = root.val + Math.max(0, Math.max(left, right));
 
 		return partial;
 	}

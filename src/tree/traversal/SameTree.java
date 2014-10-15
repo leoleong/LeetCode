@@ -22,9 +22,12 @@ public class SameTree {
 			return false;
 		}
 
-		// divide & conquer
-		boolean sameTree = p.val == q.val && isSameTree(p.left, q.left)
-				&& isSameTree(p.right, q.right);
+		// divide
+		boolean left = isSameTree(p.left, q.left);
+		boolean right = isSameTree(p.right, q.right);
+
+		// conquer
+		boolean sameTree = p.val == q.val && left && right;
 
 		return sameTree;
 	}

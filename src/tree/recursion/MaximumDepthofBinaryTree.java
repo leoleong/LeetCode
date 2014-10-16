@@ -12,7 +12,6 @@ public class MaximumDepthofBinaryTree {
 	}
 
 	public static int maxDepth(TreeNode root) {
-
 		if (root == null) {
 			return 0;
 		}
@@ -22,13 +21,13 @@ public class MaximumDepthofBinaryTree {
 		int right = maxDepth(root.right);
 
 		// conquer
-		int depth = Math.max(left, right) + 1; 
-		
+		int depth = Math.max(left, right) + 1;
+
 		return depth;
 	}
 
 	// Definition for binary tree
-	public class TreeNode {
+	private class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;

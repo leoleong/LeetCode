@@ -12,42 +12,48 @@
  */
 package tree.recursion;
 
-public class BinaryTreeMaximumPathSum {
+import java.util.ArrayList;
+import java.util.List;
 
-	private static int max;
+public class BinaryTreeMaximumPathSum {
 
 	public static void main(String[] args) {
 
 	}
 
 	public static int maxPathSum(TreeNode root) {
-
-		max = Integer.MIN_VALUE;
-		dfs(root);
-		
-		return max;
-	}
-
-	private static int dfs(TreeNode root) {
-
 		if (root == null) {
 			return 0;
 		}
-		
-		// divide
-		int left = dfs(root.left);
-		int right = dfs(root.right);
-		
-		// conquer
-		int tatalSum = root.val + (left > 0 ? left : 0) + (right > 0 ? right : 0);
-		max = Math.max(max, tatalSum);
-		int partialSum = Math.max(left, right) > 0 ? Math.max(left, right) + root.val : root.val;
 
-		return partialSum;
+		List<Integer> result = new ArrayList<Integer>();
+		result.add(Integer.MIN_VALUE);
+		dfs(root, result);
+
+		return result.get(0);
+	}
+
+	private static int dfs(TreeNode root, List<Integer> result) {
+		if (root == null) {
+			return 0;
+		}
+
+		// divide
+		int left = dfs(root.left, result);
+		int right = dfs(root.right, result);
+
+		// conquer
+		int sum = root.val + (left > 0 ? left : 0) + (right > 0 ? right : 0);
+		if (sum > result.get(0)) {
+			result.set(0, sum);
+		}
+		int partial = root.val + Math.max(0, Math.max(left, right));
+
+		return partial;
 	}
 
 	// Definition for binary tree
-	public static class TreeNode {
+	private static class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;

@@ -17,15 +17,15 @@ public class MinimumDepthofBinaryTree {
 	}
 
 	private static int minDepth(TreeNode root, boolean hasSibling) {
-
 		if (root == null) {
 			return hasSibling ? Integer.MAX_VALUE : 0;
 		}
 
-		// divide & conquer
+		// divide
 		int left = minDepth(root.left, root.right != null);
 		int right = minDepth(root.right, root.left != null);
 
+		// conquer
 		int depth = Math.min(left, right) + 1;
 
 		return depth;

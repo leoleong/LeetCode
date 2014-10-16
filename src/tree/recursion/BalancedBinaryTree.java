@@ -22,10 +22,11 @@ public class BalancedBinaryTree {
 			return 0;
 		}
 
-		// divide & conquer
+		// divide
 		int left = balancedHeight(root.left);
 		int right = balancedHeight(root.right);
 
+		// conquer
 		if (left < 0 || right < 0 || Math.abs(left - right) > 1) {
 			return -1;
 		}
@@ -35,7 +36,7 @@ public class BalancedBinaryTree {
 	}
 
 	// Definition for binary tree
-	public static class TreeNode {
+	private static class TreeNode {
 		int val;
 		TreeNode left;
 		TreeNode right;
